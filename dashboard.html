@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meu Caixa - Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Resumo de Junho</h2>
+    
+    <div class="cards">
+      <div class="card">Ganhos<br><strong>R$ 5.200</strong></div>
+      <div class="card">Gastos<br><strong>R$ 2.310</strong></div>
+      <div class="card">Lucro<br><strong>R$ 2.890</strong></div>
+    </div>
+
+    <canvas id="pizzaChart" width="300" height="300"></canvas>
+    <canvas id="barChart" width="300" height="300"></canvas>
+
+    <div class="actions">
+      <button onclick="adicionarGanho()">Adicionar Ganho</button>
+      <button onclick="adicionarGasto()">Adicionar Gasto</button>
+    </div>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
