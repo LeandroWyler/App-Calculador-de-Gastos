@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Novo Registro</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h2 id="formTitle">Adicionar Registro</h2>
+
+    <label for="tipo">Tipo:</label>
+    <select id="tipo" onchange="atualizarTipo()">
+      <option value="ganho">Ganho</option>
+      <option value="gasto">Gasto</option>
+    </select>
+
+    <label for="valor">Valor (R$):</label>
+    <input type="number" id="valor" placeholder="Ex: 100.00" />
+
+    <label for="categoria">Categoria:</label>
+    <input type="text" id="categoria" placeholder="Ex: Venda, Produto, Marketing" />
+
+    <label for="descricao">Descrição:</label>
+    <textarea id="descricao" placeholder="Ex: Pagamento recebido via Pix"></textarea>
+
+    <label for="data">Data:</label>
+    <input type="date" id="data" />
+
+    <button onclick="salvarRegistro()">Salvar</button>
+  </div>
+
+  <script src="form.js"></script>
+</body>
+</html>
