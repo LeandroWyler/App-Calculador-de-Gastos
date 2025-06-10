@@ -45,3 +45,29 @@ button:hover {
   margin-top: 10px;
   font-size: 0.9rem;
 }
+.cards {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.card {
+  background-color: #e8f5e9;
+  padding: 15px;
+  border-radius: 12px;
+  width: 30%;
+  text-align: center;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  font-weight: bold;
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions button {
+  width: 48%;
+}
