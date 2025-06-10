@@ -1,12 +1,12 @@
 // dashboard.js
 
-function adicionarGanho() {
-  alert("Abrir formulário para adicionar ganho");
-}
+document.getElementById("btnAdicionarGanho").addEventListener("click", function () {
+    window.location.href = "form.html?tipo=ganho";
+});
 
-function adicionarGasto() {
-  alert("Abrir formulário para adicionar gasto");
-}
+document.getElementById("btnAdicionarGasto").addEventListener("click", function () {
+    window.location.href = "form.html?tipo=gasto";
+});
 
 // Gráfico de pizza
 const pizzaCtx = document.getElementById('pizzaChart').getContext('2d');
