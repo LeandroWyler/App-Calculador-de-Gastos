@@ -1,52 +1,72 @@
-// dashboard.js
+document.addEventListener("DOMContentLoaded", function () {
+    // Botões para adicionar ganho e gasto
+    document.getElementById("btnAdicionarGanho").addEventListener("click", function () {
+        window.location.href = "form.html?tipo=ganho";
+    });
 
-document.getElementById("btnAdicionarGanho").addEventListener("click", function () {
-    window.location.href = "form.html?tipo=ganho";
+    document.getElementById("btnAdicionarGasto").addEventListener("click", function () {
+        window.location.href = "form.html?tipo=gasto";
+    });
+
+    // Funções de exemplo para carregar dados simulados
+    const dadosGanhos = [3000, 4200, 5000, 4800, 5300, 5000];
+    const dadosGastos = [1200, 1800, 2300, 2000, 2100, 2300];
+
+    const totalGanhos = dadosGanhos.reduce((a, b) => a + b, 0);
+    const totalGastos = dadosGastos.reduce((a, b) => a + b, 0);
+    const lucro = totalGanhos - totalGastos;
+
+    document.getElementById("ganhos").textContent = totalGanhos.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    });
+
+    document.getElementById("gastos").textContent = totalGastos.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    });
+
+    document.getElementById("lucro").textContent = lucro.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    });
+
+    // Renderiza gráficos
+    renderizarGraficos(dadosGanhos, dadosGastos);
 });
 
-document.getElementById("btnAdicionarGasto").addEventListener("click", function () {
-    window.location.href = "form.html?tipo=gasto";
-});
+function renderizarGraficos(ganhos, gastos) {
+    // Gráfico de barras
+    const ctxBar = document.getElementById("graficoBarra").getContext("2d");
+    new Chart(ctxBar, {
+        type: "bar",
+        data: {
+            labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun"],
+            datasets: [
+                {
+                    label: "Ganhos",
+                    data: ganhos,
+                    backgroundColor: "#2e7d32"
+                },
+                {
+                    label: "Gastos",
+                    data: gastos,
+                    backgroundColor: "#a5d6a7"
+                }
+            ]
+        }
+    });
 
-// Gráfico de pizza
-const pizzaCtx = document.getElementById('pizzaChart').getContext('2d');
-new Chart(pizzaCtx, {
-  type: 'doughnut',
-  data: {
-    labels: ['Produtos', 'Marketing', 'Aluguel', 'Transporte'],
-    datasets: [{
-      label: 'Gastos por categoria',
-      data: [800, 500, 600, 410],
-      backgroundColor: ['#66bb6a', '#81c784', '#a5d6a7', '#c8e6c9']
-    }]
-  }
-});
-
-// Gráfico de barras
-const barCtx = document.getElementById('barChart').getContext('2d');
-new Chart(barCtx, {
-  type: 'bar',
-  data: {
-    labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
-    datasets: [
-      {
-        label: 'Ganhos',
-        data: [3000, 4200, 5000, 4800, 5200, 5000],
-        backgroundColor: '#2e7d32'
-      },
-      {
-        label: 'Gastos',
-        data: [1200, 1800, 2300, 2000, 2100, 2310],
-        backgroundColor: '#c8e6c9'
-      }
-    ]
-  },
-  options: {
-    responsive: true,
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
+    // Gráfico de pizza
+    const ctxPizza = document.getElementById("graficoPizza").getContext("2d");
+    new Chart(ctxPizza, {
+        type: "doughnut",
+        data: {
+            labels: ["Produtos", "Marketing", "Aluguel", "Transporte"],
+            datasets: [{
+                data: [800, 600, 500, 410],
+                backgroundColor: ["#66bb6a", "#81c784", "#a5d6a7", "#c8e6c9"]
+            }]
+        }
+    });
+}
